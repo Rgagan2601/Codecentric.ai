@@ -1,8 +1,4 @@
-// Enhanced Dynamic Website JavaScript
-
-// Global state
-let currentStep = 1;
-const totalSteps = 2;
+// Simple JavaScript for CodeCentric.AI Website
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,11 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize all website functionality
 function initializeWebsite() {
     setupNavigation();
-    setupAnimations();
-    setupForms();
-    setupCounters();
     setupScrollEffects();
-    setupServiceInteractions();
+    setupContactForm();
+    setupAnimations();
 }
 
 // Navigation Setup
@@ -98,230 +92,6 @@ function updateActiveNavLink() {
     });
 }
 
-// Animated Counters
-function setupCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const observerOptions = {
-        threshold: 0.7
-    };
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
-    });
-}
-
-function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-target'));
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-
-    const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current);
-    }, 16);
-}
-
-// Intersection Observer for animations
-function setupAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll(
-        '.service-card, .about-content, .services-header, .contact-info, .tech-item'
-    );
-    
-    animatedElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(element);
-    });
-}
-
-// Service Card Interactions
-function setupServiceInteractions() {
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-
-        // Add click to enquiry functionality
-        const serviceLink = card.querySelector('.service-link');
-        serviceLink?.addEventListener('click', (e) => {
-            e.preventDefault();
-            const serviceType = card.getAttribute('data-service');
-            prefillEnquiryForm(serviceType);
-            document.getElementById('enquiry').scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // Tech stack interactions
-    const techItems = document.querySelectorAll('.tech-item');
-    techItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const tech = item.getAttribute('data-tech');
-            showTechInfo(tech);
-        });
-    });
-}
-
-// Show tech information (could be expanded to show modal or tooltip)
-function showTechInfo(tech) {
-    const techInfo = {
-        'Python': 'Advanced AI and machine learning development',
-        'TensorFlow': 'Deep learning and neural network frameworks',
-        'React': 'Modern frontend development and user interfaces',
-        'Node.js': 'Server-side JavaScript and API development'
-    };
-    
-    // Simple alert for now - could be enhanced with modal
-    alert(`${tech}: ${techInfo[tech] || 'Cutting-edge technology solution'}`);
-}
-
-// Form Handling
-function setupForms() {
-    setupEnquiryForm();
-    setupContactForm();
-}
-
-// Enquiry Form Multi-step
-function setupEnquiryForm() {
-    const enquiryForm = document.getElementById('enquiry-form');
-    if (!enquiryForm) return;
-
-    enquiryForm.addEventListener('submit', handleEnquirySubmit);
-    updateProgressBar();
-}
-
-function nextStep() {
-    if (currentStep < totalSteps) {
-        // Validate current step
-        if (validateStep(currentStep)) {
-            currentStep++;
-            showStep(currentStep);
-            updateProgressBar();
-        }
-    }
-}
-
-function prevStep() {
-    if (currentStep > 1) {
-        currentStep--;
-        showStep(currentStep);
-        updateProgressBar();
-    }
-}
-
-function showStep(step) {
-    const steps = document.querySelectorAll('.form-step');
-    steps.forEach((stepEl, index) => {
-        stepEl.classList.toggle('active', index + 1 === step);
-    });
-}
-
-function updateProgressBar() {
-    const progressFill = document.querySelector('.progress-fill');
-    const stepIndicators = document.querySelectorAll('.step-indicator');
-    
-    if (progressFill) {
-        const progress = (currentStep / totalSteps) * 100;
-        progressFill.style.width = `${progress}%`;
-    }
-
-    stepIndicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index + 1 <= currentStep);
-    });
-}
-
-function validateStep(step) {
-    const currentStepEl = document.querySelector(`.form-step[data-step="${step}"]`);
-    const requiredFields = currentStepEl.querySelectorAll('[required]');
-    
-    let isValid = true;
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            field.style.borderColor = '#ef4444';
-            isValid = false;
-        } else {
-            field.style.borderColor = '#e2e8f0';
-        }
-    });
-
-    if (!isValid) {
-        showNotification('Please fill in all required fields', 'error');
-    }
-
-    return isValid;
-}
-
-function handleEnquirySubmit(e) {
-    e.preventDefault();
-    
-    if (!validateStep(currentStep)) return;
-
-    const formData = new FormData(e.target);
-    const enquiryData = Object.fromEntries(formData.entries());
-    
-    // Show loading state
-    const submitBtn = e.target.querySelector('.submit-btn');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i data-lucide="loader-2"></i> Submitting...';
-    submitBtn.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        console.log('Enquiry Data:', enquiryData);
-        showNotification('Thank you! Your enquiry has been submitted successfully. We\'ll get back to you within 24 hours.', 'success');
-        
-        // Reset form
-        e.target.reset();
-        currentStep = 1;
-        showStep(1);
-        updateProgressBar();
-        
-        // Reset button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        
-        // Re-initialize icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }, 2000);
-}
-
 // Contact Form
 function setupContactForm() {
     const contactForm = document.getElementById('contact-form');
@@ -357,12 +127,46 @@ function setupContactForm() {
     });
 }
 
-// Prefill enquiry form based on service selection
-function prefillEnquiryForm(serviceType) {
-    const projectTypeSelect = document.querySelector('select[name="projectType"]');
-    if (projectTypeSelect) {
-        projectTypeSelect.value = serviceType;
-    }
+// Intersection Observer for animations
+function setupAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animatedElements = document.querySelectorAll(
+        '.service-card, .staffing-card, .case-study-card, .process-step'
+    );
+    
+    animatedElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(element);
+    });
+
+    // Service card hover effects
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
 }
 
 // Notification System
@@ -401,28 +205,31 @@ function showNotification(message, type = 'info') {
         max-width: 400px;
     `;
 
-    // Add animation styles
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .notification-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 0;
-            margin-left: auto;
-        }
-    `;
-    document.head.appendChild(style);
+    // Add animation styles if not already added
+    if (!document.querySelector('#notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .notification-close {
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                padding: 0;
+                margin-left: auto;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     document.body.appendChild(notification);
 
@@ -439,26 +246,81 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Expose functions to global scope for HTML onclick handlers
-window.nextStep = nextStep;
-window.prevStep = prevStep;
+// Typing effect for hero title
+function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
 
-// Performance optimization - lazy load images
-function setupLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
+// Initialize typing effect on page load
+window.addEventListener('load', () => {
+    const heroTitle = document.getElementById('hero-title');
+    if (heroTitle) {
+        const originalText = heroTitle.textContent;
+        setTimeout(() => {
+            typeWriter(heroTitle, originalText, 80);
+        }, 500);
+    }
+});
+
+// Add some interactive effects for better UX
+document.addEventListener('DOMContentLoaded', () => {
+    // Add click effects to buttons
+    const buttons = document.querySelectorAll('.cta-button, .feature-btn, .submit-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
         });
     });
 
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Initialize lazy loading
-setupLazyLoading();
+    // Add ripple animation if not already added
+    if (!document.querySelector('#ripple-styles')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-styles';
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
