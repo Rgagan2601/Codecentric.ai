@@ -31,13 +31,15 @@ function setupNavigation() {
             hamburger?.classList.remove('active');
             navMenu?.classList.remove('active');
             
-            // Update active nav link
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+            // Update active nav link for same-page navigation
+            if (link.getAttribute('href').startsWith('#')) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
         });
     });
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for navigation links (only for same-page anchors)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -50,6 +52,27 @@ function setupNavigation() {
                 });
             }
         });
+    });
+
+    // Set active nav link based on current page
+    setActiveNavLink();
+}
+
+// Set active navigation link based on current page
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        
+        // Check if link matches current page
+        if (href === currentPage || 
+            (currentPage === 'index.html' && href.startsWith('#')) ||
+            (currentPage === '' && href.startsWith('#'))) {
+            link.classList.add('active');
+        }
     });
 }
 
@@ -428,4 +451,71 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.head.appendChild(style);
     }
+});
+// Client Management Functions
+function loadClientsFromStorage() {
+    const clients = JSON.parse(localStorage.getItem('clients') || '[]');
+    return clients;
+}
+
+function renderClientsSection() {
+    const clients = loadClientsFromStorage();
+    const clientsGrid = document.getElementById('clients-grid');
+    const clientsSection = document.getElementById('clients-section');
+    
+    if (!clientsGrid || !clientsSection) return;
+    
+    if (clients.length === 0) {
+        // Hide the entire section if no clients
+        clientsSection.style.display = 'none';
+        return;
+    }
+    
+    clientsSection.style.display = 'block';
+    
+    // Sort clients to show featured ones first
+    const sortedClients = clients.sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+    });
+    
+    clientsGrid.innerHTML = sortedClients.map(client => {
+        if (client.logo) {
+            return `
+                <div class="client-logo ${client.featured ? 'featured' : ''}" ${client.website ? `onclick="window.open('${client.website}', '_blank')"` : ''}>
+                    <img src="${client.logo}" alt="${client.name}" title="${client.name}">
+                    ${client.featured ? '<div class="featured-badge">⭐</div>' : ''}
+                </div>
+            `;
+        } else {
+            return `
+                <div class="client-logo text-logo ${client.featured ? 'featured' : ''}" ${client.website ? `onclick="window.open('${client.website}', '_blank')"` : ''}>
+                    ${client.name}
+                    ${client.featured ? '<div class="featured-badge">⭐</div>' : ''}
+                </div>
+            `;
+        }
+    }).join('');
+    
+    console.log('Rendered', clients.length, 'clients');
+}
+
+// Initialize clients on page load
+document.addEventListener('DOMContentLoaded', function() {
+    renderClientsSection();
+    
+    // Listen for storage changes to update clients in real-time
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'clients') {
+            console.log('Clients updated in localStorage, refreshing...');
+            renderClientsSection();
+        }
+    });
+    
+    // Also listen for custom events from the same window (admin panel)
+    window.addEventListener('clientsUpdated', function() {
+        console.log('Clients updated event received, refreshing...');
+        renderClientsSection();
+    });
 });

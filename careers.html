@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Join Our AI Team | CodeCentric.AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="careers.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">codecentric.ai</a></h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link active">Careers</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i data-lucide="chevron-right"></i>
+            <span>Careers</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="careers-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Join Our AI Revolution</h1>
+                <p>Be part of a team that's shaping the future of artificial intelligence. We're looking for passionate individuals who want to make a real impact in the AI industry.</p>
+                <div class="hero-actions">
+                    <a href="#job-openings" class="cta-button">
+                        <i data-lucide="briefcase"></i>
+                        View Open Positions
+                    </a>
+                    <a href="index.html" class="cta-button secondary">
+                        <i data-lucide="arrow-left"></i>
+                        Back to Home
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Team Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section class="why-join-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join CodeCentric.AI?</h2>
+                <p>Discover what makes our company a great place to build your AI career</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Accelerate your career with cutting-edge AI projects and continuous learning opportunities.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Collaborative Culture</h3>
+                    <p>Work with brilliant minds from around the world in a supportive and inclusive environment.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Innovation First</h3>
+                    <p>Be at the forefront of AI innovation with access to the latest tools and technologies.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <h3>Remote Flexibility</h3>
+                    <p>Enjoy the flexibility of remote work with opportunities for global collaboration.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Maintain a healthy work-life balance with flexible hours and comprehensive benefits.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <h3>Recognition & Rewards</h3>
+                    <p>Your contributions are valued and rewarded with competitive compensation and recognition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Openings Section -->
+    <section class="job-openings">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Openings</h2>
+                <p>Find your perfect role in our growing AI team</p>
+            </div>
+
+            <!-- Job Filters -->
+            <div class="job-filters">
+                <button class="filter-btn active" data-filter="all">All Positions</button>
+                <button class="filter-btn" data-filter="engineering">Engineering</button>
+                <button class="filter-btn" data-filter="data-science">Data Science</button>
+                <button class="filter-btn" data-filter="product">Product</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="sales">Sales</button>
+                <button id="refresh-jobs-btn" class="refresh-jobs-btn">
+                    <i data-lucide="refresh-cw"></i> Refresh Jobs
+                </button>
+            </div>
+
+            <!-- Job Listings -->
+            <div class="jobs-grid" id="jobs-grid">
+                <div class="no-jobs-message" id="no-jobs-message">
+                    <div class="empty-state">
+                        <i data-lucide="briefcase"></i>
+                        <h3>No Job Openings Available</h3>
+                        <p>We're not currently hiring, but check back soon for new opportunities!</p>
+                        <a href="index.html#contact" class="cta-button">
+                            <i data-lucide="mail"></i>
+                            Contact Us for Future Opportunities
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process Section -->
+    <section class="application-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Hiring Process</h2>
+                <p>A transparent and efficient process designed to find the best fit</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Application Review</h3>
+                        <p>We review your application and portfolio within 48 hours.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Initial Screening</h3>
+                        <p>A brief call to discuss your background and interest in the role.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Technical Assessment</h3>
+                        <p>Demonstrate your skills through a relevant technical challenge.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Team Interview</h3>
+                        <p>Meet with team members and discuss collaboration and culture fit.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Final Decision</h3>
+                        <p>We make our decision and extend an offer to successful candidates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Modal -->
+    <div id="job-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-job-title">Job Title</h2>
+                <button class="close-modal" onclick="closeJobModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-job-content">
+                <!-- Job details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="apply-now-btn" onclick="applyForJob()">Apply Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>codecentric.ai</h3>
+                    <p>Transforming businesses through intelligent AI solutions and cutting-edge technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">AI Implementation</a></li>
+                        <li><a href="index.html#services">Machine Learning</a></li>
+                        <li><a href="index.html#services">AI Development</a></li>
+                        <li><a href="index.html#services">Full-Stack Integration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i data-lucide="linkedin"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                        <a href="#"><i data-lucide="github"></i></a>
+                        <a href="#"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeCentric.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="careers.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

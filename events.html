@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Webinars - AI Learning Hub | CodeCentric.AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="events.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">codecentric.ai</a></h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="events.html" class="nav-link active">Events</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i data-lucide="chevron-right"></i>
+            <span>Events</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="events-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Events & Learning Hub</h1>
+                <p>Join our community of AI enthusiasts, developers, and business leaders. Attend webinars, workshops, and conferences to stay ahead in the AI revolution.</p>
+                <div class="hero-actions">
+                    <a href="#upcoming-events" class="cta-button">
+                        <i data-lucide="calendar"></i>
+                        View Upcoming Events
+                    </a>
+                    <a href="index.html" class="cta-button secondary">
+                        <i data-lucide="arrow-left"></i>
+                        Back to Home
+                    </a>
+                    <a href="#newsletter" class="cta-button secondary">
+                        <i data-lucide="bell"></i>
+                        Get Notified
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="event-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Event Categories</h2>
+                <p>Explore different types of AI learning experiences</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="video"></i>
+                    </div>
+                    <h3>Webinars</h3>
+                    <p>Interactive online sessions covering the latest AI trends, tools, and techniques.</p>
+                    <div class="category-stats">
+                        <span>Weekly Sessions</span>
+                        <span>1-2 Hours</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Workshops</h3>
+                    <p>Hands-on learning experiences with practical AI implementation and coding.</p>
+                    <div class="category-stats">
+                        <span>Monthly</span>
+                        <span>4-6 Hours</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="presentation"></i>
+                    </div>
+                    <h3>Conferences</h3>
+                    <p>Large-scale events featuring industry leaders and cutting-edge AI research.</p>
+                    <div class="category-stats">
+                        <span>Quarterly</span>
+                        <span>1-2 Days</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="coffee"></i>
+                    </div>
+                    <h3>Meetups</h3>
+                    <p>Casual networking events for AI professionals and enthusiasts.</p>
+                    <div class="category-stats">
+                        <span>Bi-weekly</span>
+                        <span>2-3 Hours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section id="upcoming-events" class="upcoming-events">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Events</h2>
+                <p>Don't miss these exciting AI learning opportunities</p>
+            </div>
+
+            <!-- Event Filters -->
+            <div class="event-filters">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="webinar">Webinars</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+                <button class="filter-btn" data-filter="conference">Conferences</button>
+                <button class="filter-btn" data-filter="meetup">Meetups</button>
+                <button id="refresh-events-btn" class="refresh-events-btn">
+                    <i data-lucide="refresh-cw"></i> Refresh Events
+                </button>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="events-grid" id="events-grid">
+                <div class="no-events-message" id="no-events-message">
+                    <div class="empty-state">
+                        <i data-lucide="calendar"></i>
+                        <h3>No Upcoming Events</h3>
+                        <p>We're planning exciting AI events and webinars. Subscribe to get notified when new events are announced!</p>
+                        <a href="#newsletter" class="cta-button">
+                            <i data-lucide="bell"></i>
+                            Subscribe for Updates
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events -->
+    <section class="past-events">
+        <div class="container">
+            <div class="section-header">
+                <h2>Past Events & Recordings</h2>
+                <p>Catch up on what you missed with our event recordings and resources</p>
+            </div>
+            
+            <div class="past-events-grid" id="past-events-grid">
+                <div class="no-past-events-message">
+                    <div class="empty-state">
+                        <i data-lucide="video"></i>
+                        <h3>No Past Events Available</h3>
+                        <p>Event recordings and resources will appear here after we host our first events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section id="newsletter" class="newsletter-signup">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated with AI Events</h2>
+                    <p>Get notified about upcoming webinars, workshops, and exclusive AI learning opportunities.</p>
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">
+                            <i data-lucide="check"></i>
+                            <span>Early access to event registration</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i data-lucide="check"></i>
+                            <span>Exclusive member-only events</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i data-lucide="check"></i>
+                            <span>Free resources and AI guides</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="interests" required>
+                                <option value="">Select Your Interest</option>
+                                <option value="webinars">Webinars</option>
+                                <option value="workshops">Workshops</option>
+                                <option value="conferences">Conferences</option>
+                                <option value="all">All Events</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="subscribe-btn">
+                            <i data-lucide="bell"></i>
+                            Subscribe to Updates
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-event-title">Event Title</h2>
+                <button class="close-modal" onclick="closeEventModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-event-content">
+                <!-- Event details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="register-now-btn" onclick="proceedToRegistration()">Register Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>codecentric.ai</h3>
+                    <p>Transforming businesses through intelligent AI solutions and cutting-edge technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">AI Implementation</a></li>
+                        <li><a href="index.html#services">Machine Learning</a></li>
+                        <li><a href="index.html#services">AI Development</a></li>
+                        <li><a href="index.html#services">Full-Stack Integration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i data-lucide="linkedin"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                        <a href="#"><i data-lucide="github"></i></a>
+                        <a href="#"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeCentric.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="events.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

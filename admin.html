@@ -54,8 +54,8 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #374151;
-            font-weight: 500;
+            color: #000000;
+            font-weight: 600;
         }
 
         .form-group input {
@@ -66,7 +66,8 @@
             font-size: 1rem;
             transition: var(--transition);
             background: #ffffff;
-            color: #1a1a1a;
+            color: #000000;
+            font-weight: 500;
         }
 
         .form-group input:focus {
@@ -109,6 +110,38 @@
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8fafc;
+            color: #000000;
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .quick-nav-btn:hover,
+        .quick-nav-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .logout-btn {
@@ -147,14 +180,19 @@
         }
 
         .stat-label {
-            color: var(--text-light);
-            font-weight: 500;
+            color: #000000;
+            font-weight: 600;
         }
 
         .contacts-section {
             background: var(--bg-light);
             padding: 2rem;
             border-radius: var(--border-radius-lg);
+        }
+
+        .contacts-header h3 {
+            color: #000000;
+            font-weight: 700;
         }
 
         .contacts-header {
@@ -195,6 +233,8 @@
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #e2e8f0;
+            color: #000000;
+            font-weight: 500;
         }
 
         .contacts-table th {
@@ -220,14 +260,15 @@
 
         .sheets-view-header h3 {
             font-size: 1.3rem;
-            color: var(--text-dark);
+            color: #000000;
             margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .sheets-view-header p {
-            color: var(--text-light);
+            color: #333333;
             font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .sheets-embed-container {
@@ -293,7 +334,8 @@
             font-size: 1rem;
             transition: var(--transition);
             background: #ffffff;
-            color: #1a1a1a;
+            color: #000000;
+            font-weight: 500;
         }
 
         .config-form input:focus {
@@ -318,6 +360,515 @@
             background: var(--primary-dark);
         }
 
+        /* Management Tabs */
+        .management-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            color: #333333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.3rem;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .add-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Jobs and Events Lists */
+        .jobs-list,
+        .events-list {
+            background: white;
+            border-radius: var(--border-radius);
+            min-height: 300px;
+        }
+
+        .item-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .item-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-btn {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background: #2563eb;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Form Styles */
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .modal-body .form-group input,
+        .modal-body .form-group select,
+        .modal-body .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: white;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .modal-body .form-group input:focus,
+        .modal-body .form-group select:focus,
+        .modal-body .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+        }
+
+        .modal-body .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .cancel-btn,
+        .save-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cancel-btn {
+            background: #6b7280;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background: #4b5563;
+        }
+
+        .save-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .save-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-light);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .empty-state p {
+            font-size: 0.9rem;
+            color: #333333;
+            font-weight: 500;
+        }
+
+        /* Content Management Styles */
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .preview-btn,
+        .publish-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preview-btn {
+            background: #6b7280;
+            color: white;
+        }
+
+        .preview-btn:hover {
+            background: #4b5563;
+        }
+
+        .publish-btn {
+            background: #10b981;
+            color: white;
+        }
+
+        .publish-btn:hover {
+            background: #059669;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .content-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .content-card-header h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .edit-content-btn,
+        .add-service-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .edit-content-btn {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .edit-content-btn:hover {
+            background: #2563eb;
+        }
+
+        .add-service-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .add-service-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .content-preview p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #333333;
+        }
+
+        .content-preview strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .nav-items-preview {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Settings Styles */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .settings-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+        }
+
+        .settings-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .setting-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .setting-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .setting-item input,
+        .setting-item textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: white;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .setting-item input:focus,
+        .setting-item textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+        }
+
+        /* Toggle Switches */
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .toggle-item label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            margin-bottom: 0;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .toggle-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-item input[type="checkbox"]:checked + .toggle-slider {
+            background: var(--primary-color);
+        }
+
+        .toggle-item input[type="checkbox"]:checked + .toggle-slider::before {
+            transform: translateX(26px);
+        }
+
+        /* Large Modal */
+        .large-modal {
+            max-width: 900px;
+        }
+
+        .large-modal .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
         @media (max-width: 768px) {
             .admin-panel {
                 padding: 2rem 1rem;
@@ -327,6 +878,16 @@
                 flex-direction: column;
                 gap: 1rem;
                 text-align: center;
+            }
+
+            .header-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .quick-nav-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
             }
 
             .config-form {
@@ -382,9 +943,26 @@
                         <h1>Contact Management Dashboard</h1>
                         <p>Manage your contact form submissions</p>
                     </div>
-                    <button id="logout-btn" class="logout-btn">
-                        <i data-lucide="log-out"></i> Logout
-                    </button>
+                    <div class="header-actions">
+                        <button id="quick-nav-contacts" class="quick-nav-btn active" data-tab="contacts">
+                            <i data-lucide="mail"></i> Contacts
+                        </button>
+                        <button id="quick-nav-jobs" class="quick-nav-btn" data-tab="jobs">
+                            <i data-lucide="briefcase"></i> Jobs
+                        </button>
+                        <button id="quick-nav-events" class="quick-nav-btn" data-tab="events">
+                            <i data-lucide="calendar"></i> Events
+                        </button>
+                        <button id="quick-nav-content" class="quick-nav-btn" data-tab="content">
+                            <i data-lucide="edit"></i> Content
+                        </button>
+                        <button id="quick-nav-settings" class="quick-nav-btn" data-tab="settings">
+                            <i data-lucide="settings"></i> Settings
+                        </button>
+                        <button id="logout-btn" class="logout-btn">
+                            <i data-lucide="log-out"></i> Logout
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Google Sheets Configuration -->
@@ -413,21 +991,45 @@
                         <div class="stat-label">Total Contacts</div>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-number" id="total-jobs">0</div>
+                        <div class="stat-label">Active Jobs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-events">0</div>
+                        <div class="stat-label">Upcoming Events</div>
+                    </div>
+                    <div class="stat-card">
                         <div class="stat-number" id="today-contacts">0</div>
                         <div class="stat-label">Today's Contacts</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="this-week-contacts">0</div>
-                        <div class="stat-label">This Week</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="this-month-contacts">0</div>
-                        <div class="stat-label">This Month</div>
-                    </div>
+                </div>
+
+                <!-- Management Tabs -->
+                <div class="management-tabs">
+                    <button class="tab-btn active" data-tab="contacts">
+                        <i data-lucide="mail"></i>
+                        Contacts
+                    </button>
+                    <button class="tab-btn" data-tab="jobs">
+                        <i data-lucide="briefcase"></i>
+                        Jobs
+                    </button>
+                    <button class="tab-btn" data-tab="events">
+                        <i data-lucide="calendar"></i>
+                        Events
+                    </button>
+                    <button class="tab-btn" data-tab="content">
+                        <i data-lucide="edit"></i>
+                        Content
+                    </button>
+                    <button class="tab-btn" data-tab="settings">
+                        <i data-lucide="settings"></i>
+                        Settings
+                    </button>
                 </div>
 
                 <!-- Contacts Table -->
-                <div class="contacts-section">
+                <div class="contacts-section tab-content active" id="contacts-tab">
                     <div class="contacts-header">
                         <h3>Contact Submissions</h3>
                         <button id="refresh-btn" class="refresh-btn">
@@ -457,6 +1059,297 @@
                     </table>
                 </div>
 
+                <!-- Jobs Management -->
+                <div class="jobs-section tab-content" id="jobs-tab">
+                    <div class="section-header">
+                        <h3>Job Management</h3>
+                        <button id="add-job-btn" class="add-btn">
+                            <i data-lucide="plus"></i> Add New Job
+                        </button>
+                        <button id="test-job-btn" class="add-btn" style="background: #10b981; margin-left: 0.5rem;">
+                            <i data-lucide="zap"></i> Add Test Job
+                        </button>
+                    </div>
+                    
+                    <div class="jobs-list" id="jobs-list">
+                        <div class="empty-state">
+                            <i data-lucide="briefcase"></i>
+                            <h4>No Jobs Posted</h4>
+                            <p>Click "Add New Job" to create your first job posting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Management -->
+                <div class="events-section tab-content" id="events-tab">
+                    <div class="section-header">
+                        <h3>Event Management</h3>
+                        <button id="add-event-btn" class="add-btn">
+                            <i data-lucide="plus"></i> Add New Event
+                        </button>
+                    </div>
+                    
+                    <div class="events-list" id="events-list">
+                        <div class="empty-state">
+                            <i data-lucide="calendar"></i>
+                            <h4>No Events Scheduled</h4>
+                            <p>Click "Add New Event" to create your first event.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Management -->
+                <div class="content-section tab-content" id="content-tab">
+                    <div class="section-header">
+                        <h3>Website Content Management</h3>
+                        <div class="header-actions">
+                            <button id="preview-changes-btn" class="preview-btn">
+                                <i data-lucide="eye"></i> Preview Changes
+                            </button>
+                            <button id="publish-changes-btn" class="publish-btn">
+                                <i data-lucide="upload"></i> Publish Changes
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="content-grid">
+                        <!-- Hero Section Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="home"></i> Hero Section</h4>
+                                <button class="edit-content-btn" data-section="hero">
+                                    <i data-lucide="edit-2"></i> Edit
+                                </button>
+                            </div>
+                            <div class="content-preview">
+                                <p><strong>Title:</strong> <span id="hero-title-preview">YOUR CERTIFIED AI EXPERT!</span></p>
+                                <p><strong>Subtitle:</strong> <span id="hero-subtitle-preview">Unlock your business potential...</span></p>
+                                <p><strong>CTA Button:</strong> <span id="hero-cta-preview">Book a free consultation</span></p>
+                            </div>
+                        </div>
+
+                        <!-- About Section Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="info"></i> About Section</h4>
+                                <button class="edit-content-btn" data-section="about">
+                                    <i data-lucide="edit-2"></i> Edit
+                                </button>
+                            </div>
+                            <div class="content-preview">
+                                <p><strong>Title:</strong> <span id="about-title-preview">Unlocking Excellence Through AI Technology</span></p>
+                                <p><strong>Description:</strong> <span id="about-desc-preview">Welcome to CodeCentric.AI...</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Services Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="briefcase"></i> Services Section</h4>
+                                <div class="card-actions">
+                                    <button class="edit-content-btn" data-section="services">
+                                        <i data-lucide="edit-2"></i> Edit
+                                    </button>
+                                    <button class="add-service-btn">
+                                        <i data-lucide="plus"></i> Add Service
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content-preview">
+                                <p><strong>Services Count:</strong> <span id="services-count">9 Services</span></p>
+                                <p><strong>Last Updated:</strong> <span id="services-updated">Today</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Section Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="mail"></i> Contact Section</h4>
+                                <button class="edit-content-btn" data-section="contact">
+                                    <i data-lucide="edit-2"></i> Edit
+                                </button>
+                            </div>
+                            <div class="content-preview">
+                                <p><strong>Email:</strong> <span id="contact-email-preview">hello@codecentric.ai</span></p>
+                                <p><strong>Phone:</strong> <span id="contact-phone-preview">+1 (555) 123-4567</span></p>
+                                <p><strong>Location:</strong> <span id="contact-location-preview">Indore, India</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="menu"></i> Navigation Menu</h4>
+                                <button class="edit-content-btn" data-section="navigation">
+                                    <i data-lucide="edit-2"></i> Edit
+                                </button>
+                            </div>
+                            <div class="content-preview">
+                                <div class="nav-items-preview" id="nav-items-preview">
+                                    <span class="nav-item">Home</span>
+                                    <span class="nav-item">Services</span>
+                                    <span class="nav-item">Careers</span>
+                                    <span class="nav-item">Events</span>
+                                    <span class="nav-item">Contact</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Management -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <h4><i data-lucide="layout"></i> Footer Content</h4>
+                                <button class="edit-content-btn" data-section="footer">
+                                    <i data-lucide="edit-2"></i> Edit
+                                </button>
+                            </div>
+                            <div class="content-preview">
+                                <p><strong>Company Description:</strong> <span id="footer-desc-preview">Transforming businesses...</span></p>
+                                <p><strong>Social Links:</strong> <span id="footer-social-preview">4 Links</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Management -->
+                <div class="settings-section tab-content" id="settings-tab">
+                    <div class="section-header">
+                        <h3>Website Settings</h3>
+                        <button id="save-settings-btn" class="save-btn">
+                            <i data-lucide="save"></i> Save All Settings
+                        </button>
+                    </div>
+
+                    <div class="settings-grid">
+                        <!-- General Settings -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="globe"></i> General Settings</h4>
+                            <div class="setting-item">
+                                <label for="site-title">Website Title</label>
+                                <input type="text" id="site-title" value="CodeCentric.AI - AI Development Services">
+                            </div>
+                            <div class="setting-item">
+                                <label for="site-description">Meta Description</label>
+                                <textarea id="site-description" rows="3">Expert AI Implementation Company - CodeCentric.AI</textarea>
+                            </div>
+                            <div class="setting-item">
+                                <label for="company-name">Company Name</label>
+                                <input type="text" id="company-name" value="codecentric.ai">
+                            </div>
+                        </div>
+
+                        <!-- Contact Settings -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="phone"></i> Contact Information</h4>
+                            <div class="setting-item">
+                                <label for="contact-email">Contact Email</label>
+                                <input type="email" id="contact-email" value="hello@codecentric.ai">
+                            </div>
+                            <div class="setting-item">
+                                <label for="contact-phone">Contact Phone</label>
+                                <input type="tel" id="contact-phone" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="setting-item">
+                                <label for="contact-address">Address</label>
+                                <input type="text" id="contact-address" value="Indore, India">
+                            </div>
+                        </div>
+
+                        <!-- Social Media Settings -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="share-2"></i> Social Media Links</h4>
+                            <div class="setting-item">
+                                <label for="linkedin-url">LinkedIn URL</label>
+                                <input type="url" id="linkedin-url" placeholder="https://linkedin.com/company/codecentric-ai">
+                            </div>
+                            <div class="setting-item">
+                                <label for="twitter-url">Twitter URL</label>
+                                <input type="url" id="twitter-url" placeholder="https://twitter.com/codecentric_ai">
+                            </div>
+                            <div class="setting-item">
+                                <label for="github-url">GitHub URL</label>
+                                <input type="url" id="github-url" placeholder="https://github.com/codecentric-ai">
+                            </div>
+                        </div>
+
+                        <!-- Feature Toggles -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="toggle-left"></i> Feature Controls</h4>
+                            <div class="setting-item toggle-item">
+                                <label for="enable-careers">
+                                    <input type="checkbox" id="enable-careers" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Careers Page
+                                </label>
+                            </div>
+                            <div class="setting-item toggle-item">
+                                <label for="enable-events">
+                                    <input type="checkbox" id="enable-events" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Events Page
+                                </label>
+                            </div>
+                            <div class="setting-item toggle-item">
+                                <label for="enable-newsletter">
+                                    <input type="checkbox" id="enable-newsletter" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Newsletter Signup
+                                </label>
+                            </div>
+                            <div class="setting-item toggle-item">
+                                <label for="maintenance-mode">
+                                    <input type="checkbox" id="maintenance-mode">
+                                    <span class="toggle-slider"></span>
+                                    Maintenance Mode
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Analytics Settings -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="bar-chart"></i> Analytics & Tracking</h4>
+                            <div class="setting-item">
+                                <label for="google-analytics">Google Analytics ID</label>
+                                <input type="text" id="google-analytics" placeholder="GA-XXXXXXXXX">
+                            </div>
+                            <div class="setting-item">
+                                <label for="facebook-pixel">Facebook Pixel ID</label>
+                                <input type="text" id="facebook-pixel" placeholder="Facebook Pixel ID">
+                            </div>
+                            <div class="setting-item toggle-item">
+                                <label for="enable-tracking">
+                                    <input type="checkbox" id="enable-tracking" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Analytics Tracking
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Performance Settings -->
+                        <div class="settings-card">
+                            <h4><i data-lucide="zap"></i> Performance</h4>
+                            <div class="setting-item toggle-item">
+                                <label for="enable-caching">
+                                    <input type="checkbox" id="enable-caching" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Browser Caching
+                                </label>
+                            </div>
+                            <div class="setting-item toggle-item">
+                                <label for="lazy-loading">
+                                    <input type="checkbox" id="lazy-loading" checked>
+                                    <span class="toggle-slider"></span>
+                                    Enable Lazy Loading
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label for="cache-duration">Cache Duration (hours)</label>
+                                <input type="number" id="cache-duration" value="24" min="1" max="168">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Google Sheets Live View -->
                 <div class="sheets-view-section">
                     <div class="sheets-view-header">
@@ -476,7 +1369,225 @@
         </div>
     </div>
 
+    <!-- Job Modal -->
+    <div id="job-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="job-modal-title">Add New Job</h2>
+                <button class="close-modal" onclick="closeJobModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="job-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="job-title">Job Title</label>
+                            <input type="text" id="job-title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-category">Category</label>
+                            <select id="job-category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="data-science">Data Science</option>
+                                <option value="product">Product</option>
+                                <option value="design">Design</option>
+                                <option value="sales">Sales</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="job-type">Job Type</label>
+                            <select id="job-type" name="type" required>
+                                <option value="">Select Type</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-location">Location</label>
+                            <input type="text" id="job-location" name="location" placeholder="e.g., Remote, San Francisco, CA" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="job-level">Experience Level</label>
+                            <select id="job-level" name="level" required>
+                                <option value="">Select Level</option>
+                                <option value="Entry">Entry Level</option>
+                                <option value="Mid-Level">Mid-Level</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Lead">Lead</option>
+                                <option value="Executive">Executive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-salary">Salary Range</label>
+                            <input type="text" id="job-salary" name="salary" placeholder="e.g., $80k - $120k" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-description">Job Description</label>
+                        <textarea id="job-description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-skills">Required Skills (comma-separated)</label>
+                        <input type="text" id="job-skills" name="skills" placeholder="e.g., Python, Machine Learning, TensorFlow">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel-btn" onclick="closeJobModal()">Cancel</button>
+                <button type="submit" form="job-form" class="save-btn">Save Job</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="event-modal-title">Add New Event</h2>
+                <button class="close-modal" onclick="closeEventModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="event-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-title">Event Title</label>
+                            <input type="text" id="event-title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" name="type" required>
+                                <option value="">Select Type</option>
+                                <option value="webinar">Webinar</option>
+                                <option value="workshop">Workshop</option>
+                                <option value="conference">Conference</option>
+                                <option value="meetup">Meetup</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-date">Event Date</label>
+                            <input type="date" id="event-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-time">Event Time</label>
+                            <input type="time" id="event-time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-duration">Duration</label>
+                            <input type="text" id="event-duration" name="duration" placeholder="e.g., 2 Hours" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-format">Format</label>
+                            <select id="event-format" name="format" required>
+                                <option value="">Select Format</option>
+                                <option value="Online">Online</option>
+                                <option value="In-Person">In-Person</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-location">Location</label>
+                            <input type="text" id="event-location" name="location" placeholder="e.g., Zoom, San Francisco, CA">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-price">Price</label>
+                            <input type="text" id="event-price" name="price" placeholder="e.g., Free, $49, $99">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Event Description</label>
+                        <textarea id="event-description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="event-featured" name="featured">
+                            Mark as Featured Event
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel-btn" onclick="closeEventModal()">Cancel</button>
+                <button type="submit" form="event-form" class="save-btn">Save Event</button>
+            </div>
+        </div>
+    </div>
+
     <script src="admin.js"></script>
     <script>lucide.createIcons();</script>
+
+    <!-- Content Edit Modal -->
+    <div id="content-modal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2 id="content-modal-title">Edit Content</h2>
+                <button class="close-modal" onclick="closeContentModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="content-form">
+                    <div id="content-form-fields">
+                        <!-- Dynamic form fields will be inserted here -->
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel-btn" onclick="closeContentModal()">Cancel</button>
+                <button type="submit" form="content-form" class="save-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="service-modal-title">Add New Service</h2>
+                <button class="close-modal" onclick="closeServiceModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="service-form">
+                    <div class="form-group">
+                        <label for="service-title">Service Title</label>
+                        <input type="text" id="service-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-icon">Icon (Lucide icon name)</label>
+                        <input type="text" id="service-icon" name="icon" placeholder="e.g., brain, users, smartphone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service-description">Description</label>
+                        <textarea id="service-description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-link">Link URL (optional)</label>
+                        <input type="url" id="service-link" name="link" placeholder="https://...">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel-btn" onclick="closeServiceModal()">Cancel</button>
+                <button type="submit" form="service-form" class="save-btn">Save Service</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
